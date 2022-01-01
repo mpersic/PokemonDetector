@@ -1,7 +1,7 @@
 ﻿
 using Xamarin.Forms;
 
-namespace XamFormsFirebaseAuth.Features.Login
+namespace PokemonDetector.Features.Login
 {
     public partial class NewUserPage : ContentPage
     {

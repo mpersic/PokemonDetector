@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace XamFormsFirebaseAuth.Features.Shell
+namespace PokemonDetector.Features.Shell
 {
     public partial class FlyoutHeader : ContentView
     {

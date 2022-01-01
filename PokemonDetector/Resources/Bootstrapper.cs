@@ -11,6 +11,8 @@ using TinyMvvm.IoC;
 using TinyNavigationHelper;
 using TinyNavigationHelper.Forms;
 using Xamarin.Forms;
+using PokemonDetector.Features.Shell;
+using PokemonDetector.Features.Login;
 
 namespace PokemonDetector
 {

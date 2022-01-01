@@ -2,8 +2,8 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XamFormsFirebaseAuth.Features.Login;
-using XamFormsFirebaseAuth.Features.Shell;
+using PokemonDetector.Features.Login;
+using PokemonDetector.Features.Shell;
 
 namespace PokemonDetector
 {

@@ -9,7 +9,8 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using TinyMvvm;
 using Xamarin.Forms;
-using XamFormsFirebaseAuth.Features.Shell;
+using PokemonDetector.Features.Shell;
+using PokemonDetector.Features.Login;
 
 namespace PokemonDetector.ViewModels
 {
@@ -61,7 +62,7 @@ namespace PokemonDetector.ViewModels
             {
                 var authService = DependencyService.Resolve<IAuthenticationService>();
                 authService.SignOut();
-                //Shell.Current.GoToAsync($"{nameof(PokemonListView)}?{nameof(LoginShell)}");
+                Application.Current.MainPage = new LoginShell();
             }
             catch (Exception ex)
             {

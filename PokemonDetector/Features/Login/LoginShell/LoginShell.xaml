@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="XamFormsFirebaseAuth.Features.Shell.LoginShell"
+    x:Class="PokemonDetector.Features.Shell.LoginShell"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:XamFormsFirebaseAuth.Features.Shell"
-    xmlns:login="clr-namespace:XamFormsFirebaseAuth.Features.Login"
+    xmlns:local="clr-namespace:PokemonDetector.Features.Shell"
+    xmlns:login="clr-namespace:PokemonDetector.Features.Login"
     xmlns:mainShell="clr-namespace:PokemonDetector">
 
     <ShellContent ContentTemplate="{DataTemplate login:LoginPage}" Route="LoginPage" />
@@ -12,6 +12,4 @@
     <ShellContent ContentTemplate="{DataTemplate login:NewUserPage}" Route="NewUserPage" />
 
     <ShellContent ContentTemplate="{DataTemplate login:ForgotPasswordPage}" Route="ForgotPasswordPage" />
-
-    <ShellContent ContentTemplate="{DataTemplate mainShell:MainShell}" Route="MainShell" />
 </Shell>

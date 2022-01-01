@@ -4,7 +4,7 @@ using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace XamFormsFirebaseAuth.Features.Login
+namespace PokemonDetector.Features.Login
 {
     public class LoginViewModel : BaseViewModel
     {
@@ -30,7 +30,7 @@ namespace XamFormsFirebaseAuth.Features.Login
                 var authService = DependencyService.Resolve<IAuthenticationService>();
                 var token = await authService.SignIn(Email, Password);
 
-                await Xamarin.Forms.Shell.Current.GoToAsync("//MainShell");
+                Application.Current.MainPage = new MainShell();
             }
             catch (Exception ex)
             {

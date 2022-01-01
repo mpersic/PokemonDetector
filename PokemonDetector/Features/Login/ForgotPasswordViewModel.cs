@@ -4,7 +4,7 @@ using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace XamFormsFirebaseAuth.Features.Login
+namespace PokemonDetector.Features.Login
 {
     public class ForgotPasswordViewModel : BaseViewModel
     {

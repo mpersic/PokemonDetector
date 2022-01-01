@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-using XamFormsFirebaseAuth.Features.Shell;
+using PokemonDetector.Features.Shell;
 
 namespace PokemonDetector
 {

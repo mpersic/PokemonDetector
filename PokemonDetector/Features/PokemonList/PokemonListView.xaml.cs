@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XamFormsFirebaseAuth.Features.Shell;
+using PokemonDetector.Features.Shell;
 
 namespace PokemonDetector.Views
 {

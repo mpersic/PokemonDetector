@@ -4,7 +4,7 @@ using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace XamFormsFirebaseAuth.Features.Shell
+namespace PokemonDetector.Features.Shell
 {
     public class LoginShellViewModel : BaseViewModel
     {
