@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "489322397900",
+    "project_id": "xamarin-pokedex",
+    "storage_bucket": "xamarin-pokedex.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489322397900:android:b4e900bdeca0d9b3b04269",
+        "android_client_info": {
+          "package_name": "com.demo.pokemondetector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489322397900-71pl0bqbbpen3nb71vod29nj9s3k4ckk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA23pU2i4j9GYWmega_Xghx7vfxl_jpO7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489322397900-71pl0bqbbpen3nb71vod29nj9s3k4ckk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

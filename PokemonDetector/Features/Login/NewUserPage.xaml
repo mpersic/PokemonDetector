@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="XamFormsFirebaseAuth.Features.Login.NewUserPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="Red"
+    Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout Padding="20" VerticalOptions="Center">
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="Sign up"
+                TextColor="White" />
+
+            <Frame
+                Padding="0"
+                BackgroundColor="LightGray"
+                CornerRadius="10">
+                <Entry
+                    Margin="10"
+                    Placeholder="Name"
+                    Text="{Binding Username}" />
+            </Frame>
+
+            <Frame
+                Padding="0"
+                BackgroundColor="LightGray"
+                CornerRadius="10">
+                <Entry
+                    Margin="10"
+                    Placeholder="Email"
+                    Text="{Binding Email}" />
+            </Frame>
+
+            <Frame
+                Padding="0"
+                BackgroundColor="LightGray"
+                CornerRadius="10">
+                <Entry
+                    Margin="10"
+                    IsPassword="True"
+                    Placeholder="Password"
+                    Text="{Binding Password}" />
+            </Frame>
+
+            <Button
+                BackgroundColor="Blue"
+                Command="{Binding SignUpCommand}"
+                CornerRadius="10"
+                Style="{StaticResource PrimaryButton}"
+                Text="Sign Up" />
+
+            <Button
+                BackgroundColor="Red"
+                Command="{Binding GoToSignInCommand}"
+                Text="Already have an account ? sign-in" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

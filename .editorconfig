@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0006: Metadata file 'C:\Users\Matej\Desktop\ruap\PokemonDetector\bin\Debug\netstandard2.0\ref\PokemonDetector.dll' could not be found
+dotnet_diagnostic.CS0006.severity = error

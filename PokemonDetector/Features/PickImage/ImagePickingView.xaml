@@ -1,0 +1,36 @@
+﻿<ContentPage
+    x:Class="PokemonDetector.Views.ImagePickingView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Pokedex"
+    BackgroundColor="Red">
+    <Grid>
+        <Frame
+            Margin="20"
+            Padding="20"
+            BackgroundColor="LightGray"
+            CornerRadius="10"
+            HasShadow="False"
+            VerticalOptions="Center">
+            <StackLayout Padding="0" Spacing="10">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="Who's that Pokemon?" />
+                <Label Text="Take a photo or pick a photo from your photo libray to identify what type of pokemon you have found!" />
+                <Button
+                    BackgroundColor="Blue"
+                    Command="{Binding TakePhoto}"
+                    CornerRadius="10"
+                    HeightRequest="60"
+                    Text="Take photo" />
+                <Button
+                    BackgroundColor="Blue"
+                    Command="{Binding PickPhoto}"
+                    CornerRadius="10"
+                    HeightRequest="60"
+                    Text="Pick photo" />
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

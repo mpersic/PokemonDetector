@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="XamFormsFirebaseAuth.Features.Login.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="Red"
+    Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout Padding="20" VerticalOptions="Center">
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="Login"
+                TextColor="White" />
+
+            <Frame
+                Padding="0"
+                BackgroundColor="LightGray"
+                CornerRadius="10">
+
+                <Entry
+                    Margin="10"
+                    BackgroundColor="LightGray"
+                    Placeholder="Email"
+                    Text="{Binding Email}" />
+            </Frame>
+
+            <Frame
+                Padding="0"
+                BackgroundColor="LightGray"
+                CornerRadius="10">
+
+                <Entry
+                    Margin="5"
+                    BackgroundColor="LightGray"
+                    IsPassword="True"
+                    Placeholder="Password"
+                    Text="{Binding Password}" />
+            </Frame>
+
+            <Button
+                BackgroundColor="Blue"
+                Command="{Binding SignInCommand}"
+                CornerRadius="10"
+                Style="{StaticResource PrimaryButton}"
+                Text="Sign In" />
+
+            <StackLayout Orientation="Horizontal">
+
+                <Button
+                    BackgroundColor="Red"
+                    Command="{Binding ForgotPasswordCommand}"
+                    CornerRadius="10"
+                    HorizontalOptions="StartAndExpand"
+                    Text="Forgot Password" />
+
+                <Button
+                    BackgroundColor="Red"
+                    Command="{Binding SignUpCommand}"
+                    CornerRadius="10"
+                    Text="Sign Up" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

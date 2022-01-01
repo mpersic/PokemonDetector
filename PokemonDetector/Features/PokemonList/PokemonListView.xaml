@@ -1,0 +1,52 @@
+﻿<ContentPage
+    x:Class="PokemonDetector.Views.PokemonListView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PokemonDetector.ViewModels"
+    xmlns:model="clr-namespace:PokemonDetector.Models"
+    Title="Pokedex"
+    BackgroundColor="Red">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding SignOutCommand}" Text="Sign Out" />
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <CollectionView Margin="10" ItemsSource="{Binding Pokemons}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Pokemon">
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="LightGray"
+                        CornerRadius="10">
+                        <StackLayout>
+                            <Label
+                                FontSize="16"
+                                Text="{Binding Name}"
+                                TextColor="Black" />
+                            <Label
+                                FontSize="12"
+                                Text="{Binding Type}"
+                                TextColor="Gray" />
+                            <Label
+                                FontSize="12"
+                                Text="{Binding AttackDamage}"
+                                TextColor="Gray" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Margin="5"
+            BackgroundColor="Blue"
+            Command="{Binding SignOutCommand}"
+            CornerRadius="10"
+            HorizontalOptions="End"
+            Text="Sign Out"
+            VerticalOptions="End" />
+    </Grid>
+
+</ContentPage>

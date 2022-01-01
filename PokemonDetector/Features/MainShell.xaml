@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="PokemonDetector.MainShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:login="clr-namespace:XamFormsFirebaseAuth.Features.Login"
+    xmlns:loginShell="clr-namespace:XamFormsFirebaseAuth.Features.Shell"
+    xmlns:views="clr-namespace:PokemonDetector.Views"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarBackgroundColor="LightGray"
+    Shell.TabBarTitleColor="Green">
+
+    <TabBar>
+        <ShellContent Title="Identify">
+            <ShellContent.Icon>
+                <FontImageSource
+                    FontFamily="{StaticResource IconFont}"
+                    Glyph="&#xf002;"
+                    Size="22" />
+            </ShellContent.Icon>
+            <views:ImagePickingView Title="Identify" />
+        </ShellContent>
+
+        <ShellContent Title="Pokemon List" ContentTemplate="{DataTemplate views:PokemonListView}">
+            <ShellContent.Icon>
+                <FontImageSource
+                    FontFamily="{StaticResource IconFont}"
+                    Glyph="&#xf03a;"
+                    Size="22" />
+            </ShellContent.Icon>
+        </ShellContent>
+    </TabBar>
+</Shell>
