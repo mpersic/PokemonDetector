@@ -1,6 +1,10 @@
-﻿using PokemonDetector.Models;
+﻿using Firebase.Database;
+using Firebase.Database.Query;
+using MvvmHelpers;
+using PokemonDetector.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,23 +13,22 @@ namespace PokemonDetector.Data
 {
     public class MockPokemonDataStore : IDataStore<Pokemon>
     {
-        public readonly List<Pokemon> items;
+        public List<Pokemon> items { get; set; } 
+        private FirebaseClient firebaseClient = new FirebaseClient("https://xamarin-pokedex-default-rtdb.europe-west1.firebasedatabase.app/");
+
 
         public MockPokemonDataStore()
         {
-            items = new List<Pokemon>()
-            {
-                new Pokemon{ Name = "Name: Pikatchu", AttackDamage = "Attack Damage: 9000",  Type = "Type: Electric"},
-                new Pokemon{ Name = "Name: Pikatchu", AttackDamage = "Attack Damage: 9000",  Type = "Type: Electric"},
-                new Pokemon{ Name = "Name: Pikatchu", AttackDamage = "Attack Damage: 9000",  Type = "Type: Electric"},
-                new Pokemon{ Name = "Name: Pikatchu", AttackDamage = "Attack Damage: 9000",  Type = "Type: Electric"},
-                new Pokemon{ Name = "Name: Pikatchu", AttackDamage = "Attack Damage: 9000",  Type = "Type: Electric"}
-            };
+            items = new List<Pokemon>();
         }
         public async Task<bool> AddItemAsync(Pokemon item)
         {
-            items.Add(item);
-
+            await firebaseClient.Child("Pokemons").PostAsync( new Pokemon 
+            {
+                Name = item.Name,
+                AttackDamage = item.AttackDamage,
+                Type = item.Type,
+            });
             return await Task.FromResult(true);
         }
 
@@ -44,7 +47,18 @@ namespace PokemonDetector.Data
 
         public async Task<IEnumerable<Pokemon>> GetItemsAsync(bool forceRefresh = false)
         {
-            return await Task.FromResult(items);
+            List<Pokemon> pokemons = (
+                await firebaseClient
+                .Child("Pokemons")
+                .OnceAsync<Pokemon>())
+                .Select(item => new Pokemon
+                {
+                    Name = item.Object.Name,
+                    AttackDamage = item.Object.AttackDamage,
+                    Type = item.Object.Type,
+                }).ToList();
+
+            return await Task.FromResult(pokemons);
         }
 
         public async Task<bool> UpdateItemAsync(Pokemon item)

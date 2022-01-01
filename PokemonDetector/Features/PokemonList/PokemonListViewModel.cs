@@ -16,21 +16,18 @@ namespace PokemonDetector.ViewModels
 {
     public class PokemonListViewModel : BaseViewModel
     {
-        public ObservableRangeCollection<Pokemon> Pokemons { get; set; }
-        public IDataStore<Pokemon> DataStore { get; }
-        public Command LoadItemsCommand { get; }
-
-        public Command SignOutCommand { get; }
-
-
         public PokemonListViewModel()
         {
             Pokemons = new ObservableRangeCollection<Pokemon>();
             DataStore = new MockPokemonDataStore();
             LoadItemsCommand = new Command(async () => await LoadItems());
             SignOutCommand = new Command(OnSignOut);
-
         }
+
+        public Command LoadItemsCommand { get; }
+        public Command SignOutCommand { get; }
+        public ObservableRangeCollection<Pokemon> Pokemons { get; set; }
+        public IDataStore<Pokemon> DataStore { get; }
 
         public async void OnAppearing()
         {
@@ -49,12 +46,13 @@ namespace PokemonDetector.ViewModels
             }
             catch (Exception ex)
             {
-                //Debug.WriteLine(ex);
+                ToastProvider.LongAlert("Something went wrong when loading Pokemon");
             }
             finally
             {
                 IsBusy = false;
             }
+
         }
         private void OnSignOut()
         {
@@ -66,7 +64,7 @@ namespace PokemonDetector.ViewModels
             }
             catch (Exception ex)
             {
-                ToastProvider.LongAlert(ex.Message);
+                ToastProvider.LongAlert("Something went wrong when signing out!");
             }
         }
 

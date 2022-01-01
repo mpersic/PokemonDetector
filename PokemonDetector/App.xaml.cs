@@ -15,7 +15,7 @@ namespace PokemonDetector
 
             Bootstrapper.Init(this);
 
-            MainPage = new LoginShell();
+            MainPage = new MainShell();
         }
 
         protected override void OnStart()

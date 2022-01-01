@@ -2,6 +2,7 @@
     x:Class="PokemonDetector.Views.PokemonListView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Helpers="clr-namespace:PokemonDetector.Converters"
     xmlns:local="clr-namespace:PokemonDetector.ViewModels"
     xmlns:model="clr-namespace:PokemonDetector.Models"
     Title="Pokedex"
@@ -9,8 +10,21 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding SignOutCommand}" Text="Sign Out" />
     </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Helpers:BooleanToNegationConverter x:Key="BooleanNegationConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid>
-        <CollectionView Margin="10" ItemsSource="{Binding Pokemons}">
+        <ActivityIndicator
+            HorizontalOptions="Center"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center" />
+        <CollectionView
+            Margin="10"
+            IsVisible="{Binding IsBusy, Converter={StaticResource BooleanNegationConverter}}"
+            ItemsSource="{Binding Pokemons}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
             </CollectionView.ItemsLayout>
@@ -22,6 +36,7 @@
                         CornerRadius="10">
                         <StackLayout>
                             <Label
+                                FontAttributes="Bold"
                                 FontSize="16"
                                 Text="{Binding Name}"
                                 TextColor="Black" />
@@ -33,6 +48,7 @@
                                 FontSize="12"
                                 Text="{Binding AttackDamage}"
                                 TextColor="Gray" />
+                            <Image BackgroundColor="Yellow" Source="https://aka.ms/campus.jpg" />
                         </StackLayout>
                     </Frame>
                 </DataTemplate>
@@ -45,6 +61,7 @@
             Command="{Binding SignOutCommand}"
             CornerRadius="10"
             HorizontalOptions="End"
+            IsVisible="{Binding IsBusy, Converter={StaticResource BooleanNegationConverter}}"
             Text="Sign Out"
             VerticalOptions="End" />
     </Grid>
