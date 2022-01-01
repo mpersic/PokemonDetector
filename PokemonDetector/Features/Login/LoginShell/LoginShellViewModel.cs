@@ -13,6 +13,10 @@ namespace PokemonDetector.Features.Shell
             SignOutCommand = new Command(OnSignOut);
         }
 
+        #region Commands
+        public ICommand SignOutCommand { get; }
+        #endregion
+
         private void OnSignOut()
         {
             var authService = DependencyService.Resolve<IAuthenticationService>();
@@ -20,7 +24,5 @@ namespace PokemonDetector.Features.Shell
 
             Xamarin.Forms.Shell.Current.GoToAsync("//LoginPage");
         }
-
-        public ICommand SignOutCommand { get; }
     }
 }

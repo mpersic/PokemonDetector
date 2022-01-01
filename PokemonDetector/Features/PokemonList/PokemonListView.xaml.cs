@@ -19,7 +19,7 @@ namespace PokemonDetector.Views
         public PokemonListView()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new PokemonListViewModel();
+            BindingContext = _viewModel = new PokemonListViewModel(new MockPokemonDataStore());
 
         }
         protected override void OnAppearing()

@@ -8,43 +8,14 @@ namespace PokemonDetector.Features.Login
 {
     public class NewUserViewModel : BaseViewModel
     {
-        private string password;
-        private string email;
-        private string username;
-
         public NewUserViewModel()
         {
             SignUpCommand = new Command(OnSignUp);
             GoToSignInCommand = new Command(GoToSignIn);
         }
 
-        private async void OnSignUp()
-        {
-            try
-            {
-                var authService = DependencyService.Resolve<IAuthenticationService>();
-                if (await authService.CreateUser(Username, Email, Password))
-                {
-                    await Xamarin.Forms.Shell.Current.GoToAsync("//MainShell");
-                }
-                else
-                {
-                    Console.WriteLine("A problem occurs when creating a user");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-
-                await Xamarin.Forms.Shell.Current
-                    .DisplayAlert("Create User", "An error occurs", "OK");
-            }
-        }
-
-        private async void GoToSignIn()
-        {
-                await Xamarin.Forms.Shell.Current.GoToAsync("//LoginPage");
-        }
+        public ICommand SignUpCommand { get; }
+        public ICommand GoToSignInCommand { get; }
 
         #region Properties
         public string Username
@@ -66,7 +37,34 @@ namespace PokemonDetector.Features.Login
         }
         #endregion
 
-        public ICommand SignUpCommand { get; }
-        public ICommand GoToSignInCommand { get; }
+        private string password;
+        private string email;
+        private string username;
+
+        private async void OnSignUp()
+        {
+            try
+            {
+                var authService = DependencyService.Resolve<IAuthenticationService>();
+                if (await authService.CreateUser(Username, Email, Password))
+                {
+                    await Xamarin.Forms.Shell.Current.GoToAsync("//MainShell");
+                }
+                else
+                {
+                    ToastProvider.LongAlert("A problem occured when creating a user");
+                }
+            }
+            catch (Exception ex)
+            {
+                ToastProvider.LongAlert("A problem occured when creating a user");
+            }
+        }
+
+        private async void GoToSignIn()
+        {
+                await Xamarin.Forms.Shell.Current.GoToAsync("//LoginPage");
+        }
+
     }
 }

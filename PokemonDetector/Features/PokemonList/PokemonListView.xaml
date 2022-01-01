@@ -34,22 +34,49 @@
                         Padding="10"
                         BackgroundColor="LightGray"
                         CornerRadius="10">
-                        <StackLayout>
+                        <Grid ColumnSpacing="0" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Frame
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Grid.Column="0"
+                                Padding="0"
+                                CornerRadius="10"
+                                HeightRequest="100"
+                                WidthRequest="100">
+                                <Image Source="{Binding ImageName}" />
+                            </Frame>
                             <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="10,0,0,0"
                                 FontAttributes="Bold"
                                 FontSize="16"
                                 Text="{Binding Name}"
                                 TextColor="Black" />
                             <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="10,10,0,0"
                                 FontSize="12"
                                 Text="{Binding Type}"
                                 TextColor="Gray" />
                             <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Margin="10,10,0,0"
                                 FontSize="12"
-                                Text="{Binding AttackDamage}"
+                                Text="{Binding Category}"
                                 TextColor="Gray" />
-                            <Image BackgroundColor="Yellow" Source="https://aka.ms/campus.jpg" />
-                        </StackLayout>
+                        </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

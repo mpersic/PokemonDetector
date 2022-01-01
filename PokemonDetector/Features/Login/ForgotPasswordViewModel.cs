@@ -8,19 +8,31 @@ namespace PokemonDetector.Features.Login
 {
     public class ForgotPasswordViewModel : BaseViewModel
     {
-        private string email;
-
         public ForgotPasswordViewModel()
         {
             ResetPasswordCommand = new Command(OnResetPassword);
             SignUpCommand = new Command(OnSignUp);
         }
 
+        #region Commands
+        public ICommand SignUpCommand { get; }
+        public ICommand ResetPasswordCommand { get; }
+        #endregion
+
+        #region Properties
+        public string Email
+        {
+            get => email;
+            set => SetProperty(ref email, value);
+        }
+        #endregion
+
+        private string email;
+
         private async void OnResetPassword(object obj)
         {
             try
             {
-
                 var authService = DependencyService.Resolve<IAuthenticationService>();
                 await authService.ResetPassword(Email);
 
@@ -32,20 +44,9 @@ namespace PokemonDetector.Features.Login
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-
-                await Xamarin.Forms.Shell.Current
-                    .DisplayAlert("Password Reset", "An error occurs", "OK");
+                ToastProvider.LongAlert("A problem occured when sending password recovery");
             }
         }
-
-        public string Email
-        {
-            get => email;
-            set => SetProperty(ref email, value);
-        }
-        public ICommand SignUpCommand { get; }
-        public ICommand ResetPasswordCommand { get; }
         private async void OnSignUp()
             => await Xamarin.Forms.Shell.Current.GoToAsync("//NewUserPage");
 

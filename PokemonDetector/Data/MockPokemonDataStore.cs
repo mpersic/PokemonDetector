@@ -16,7 +16,6 @@ namespace PokemonDetector.Data
         public List<Pokemon> items { get; set; } 
         private FirebaseClient firebaseClient = new FirebaseClient("https://xamarin-pokedex-default-rtdb.europe-west1.firebasedatabase.app/");
 
-
         public MockPokemonDataStore()
         {
             items = new List<Pokemon>();
@@ -26,8 +25,9 @@ namespace PokemonDetector.Data
             await firebaseClient.Child("Pokemons").PostAsync( new Pokemon 
             {
                 Name = item.Name,
-                AttackDamage = item.AttackDamage,
-                Type = item.Type,
+                Category = item.Category,
+                ImageName = item.ImageName,
+                Type = item.Type
             });
             return await Task.FromResult(true);
         }
@@ -54,7 +54,8 @@ namespace PokemonDetector.Data
                 .Select(item => new Pokemon
                 {
                     Name = item.Object.Name,
-                    AttackDamage = item.Object.AttackDamage,
+                    Category = item.Object.Category,
+                    ImageName = item.Object.ImageName,
                     Type = item.Object.Type,
                 }).ToList();
 
