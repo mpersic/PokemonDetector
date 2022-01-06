@@ -70,19 +70,15 @@ namespace PokemonDetector.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    ToastProvider.LongAlert("Something went wrong");
-                }
-            }
-            else
-            {
-                try
-                {
-                    offlineClassifier.ClassificationCompleted += Classifier_ClassificationCompleted;
-                    await offlineClassifier.Classify(bytes);
-                }
-                catch(Exception ex)
-                {
-                    ToastProvider.LongAlert("Something went wrong");
+                    try
+                    {
+                        offlineClassifier.ClassificationCompleted += Classifier_ClassificationCompleted;
+                        await offlineClassifier.Classify(bytes);
+                    }
+                    catch (Exception exe)
+                    {
+                        ToastProvider.LongAlert("Something went wrong");
+                    }
                 }
             }
 
